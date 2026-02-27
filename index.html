@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Earth's Enigmas Co. — Records Terminal</title>
+
+  <!-- Favicons (now in /assets) -->
+  <link rel="icon" href="./assets/favicon-v2.ico">
+  <link rel="icon" type="image/png" href="./assets/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./assets/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+
+  <!-- If you split CSS out, use this line instead of <style> -->
+  <!-- <link rel="stylesheet" href="./css/styles.css"> -->
+</head>
+
+<body>
+  <!-- INTRO OVERLAY -->
+  <div id="introOverlay" class="introOverlay" aria-hidden="false">
+    <div class="introStage" aria-label="Intro animation">
+      <div id="introGlobeWrap" class="introGlobe" aria-label="EEC logo animation area"></div>
+
+      <div class="introWordmark">
+        <div id="introType" class="introType"></div>
+        <div class="introSub">INTERNAL RECORDS TERMINAL</div>
+      </div>
+
+      <button id="introSkip" class="introSkip" type="button">skip intro</button>
+    </div>
+  </div>
+
+  <button class="skipBootBtn" id="skipBootBtn" type="button">skip animation</button>
+
+  <header>
+    <div class="mainLogo">
+      <!-- logos now in /assets -->
+      <img id="logoEEC" class="ledOn" src="./assets/eec-logo.png" alt="Earth's Enigmas Co. Logo">
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="title prehide" id="t_directive">Company Directive · 2021</div>
+      <div class="console prehide" id="t_console">
+Earth's Enigmas Co. operates as a global anomaly location and containment unit.
+
+Our objective is the identification, pursuit, and neutralization of emergent biological, atmospheric, and structural irregularities.
+
+All anomalous activity is to be documented, contained, and reclassified for public safety.
+      </div>
+      <div class="notice prehide" id="t_notice">Please report any anomalies found to the provided database.</div>
+      <div class="phone prehide" id="t_phone">—</div>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <div class="title prehide" id="t_eventTitle">Event Log · 2021 Internal Monitoring</div>
+        <div class="logList prehide" id="eventLog" aria-label="Event log"></div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <div class="title prehide" id="t_registryTitle">Corrupted Entity Registry</div>
+          <ul class="entityList" id="entityList" aria-label="Entity registry"></ul>
+        </div>
+
+        <div class="card">
+          <div class="title prehide" id="t_mapTitle">Global Incident Map · 2021</div>
+          <div class="mapWrap prehide" id="mapWrap">
+            <div class="mapContainer" aria-label="Global incident map">
+              <!-- map image now in /assets -->
+              <img src="./assets/world-map.png" class="mapImage" alt="World map">
+              <span class="mapDot dotGreen" id="nemoDot" data-name="NEMO_03" style="left:49.6%; top:23.5%;"></span>
+
+              <span class="mapDot dotRed" data-name="██-001" style="left:22%; top:38%;"></span>
+              <span class="mapDot dotRed" data-name="██-014" style="left:30%; top:40%;"></span>
+              <span class="mapDot dotRed" data-name="██-029" style="left:34%; top:66%;"></span>
+              <span class="mapDot dotRed" data-name="██-033" style="left:60%; top:64%;"></span>
+              <span class="mapDot dotRed" data-name="██-041" style="left:67%; top:69%;"></span>
+              <span class="mapDot dotRed" data-name="██-055" style="left:73%; top:43%;"></span>
+              <span class="mapDot dotRed" data-name="██-067" style="left:70%; top:55%;"></span>
+              <span class="mapDot dotRed" data-name="██-072" style="left:79%; top:55%;"></span>
+              <span class="mapDot dotRed" data-name="██-088" style="left:85%; top:49%;"></span>
+              <span class="mapDot dotRed" data-name="██-091" style="left:90%; top:52%;"></span>
+              <span class="mapDot dotRed" data-name="██-103" style="left:87%; top:79%;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footerText">© 2021 Earth's Enigmas Co. · Internal Records Terminal</span>
+    <div class="prodFooterLogo">
+      <!-- production logo now in /assets -->
+      <img id="logoProd" class="ledOn delay300 noCallout" src="./assets/eec-logo2.png" alt="Production Studio Logo">
+    </div>
+  </footer>
+
+  <!-- Video Modal -->
+  <div class="modalOverlay" id="videoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="NEMO_03 transmission">
+    <div class="modal">
+      <div class="modalTop">
+        <div class="modalTitle">NEMO_03 · RECOVERED FOOTAGE</div>
+        <button class="modalClose" id="videoClose" type="button">close</button>
+      </div>
+      <div class="modalBody">
+        <video id="nemoVideo" controls playsinline preload="metadata"></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- File Modal -->
+  <div class="modalOverlay" id="fileModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Entity file">
+    <div class="modal">
+      <div class="modalTop">
+        <div class="modalTitle" id="fileTitle">ENTITY FILE</div>
+        <button class="modalClose" id="fileClose" type="button">close</button>
+      </div>
+      <div class="modalBody">
+        <div class="fileConsole" id="fileBody"></div>
+        <div class="fileActions" id="fileActions" aria-hidden="true">
+          <button class="fileActionBtn" id="enterKeyBtn" type="button">enter encryption key</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- If you split JS out, use these instead of the big inline <script> -->
+  <!-- <script src="./js/data.js"></script>
+  <script src="./js/app.js"></script> -->
+</body>
+</html>
